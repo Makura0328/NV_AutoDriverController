@@ -1,7 +1,7 @@
 # NV_AutoDriverController
 Automatically switches NVIDIA driver settings (V-Sync and Max Frame Rate) based on the display currently set as primary in Windows.
 
-<img width="400" height="321" alt="image" src="https://github.com/user-attachments/assets/b1dc1b8a-9d52-4072-9414-864507b1b35c" />
+<img width="400" height="321" alt="スクリーンショット 2026-06-18 221544" src="https://github.com/user-attachments/assets/be5315af-4e57-412d-ab75-c00e471234f6" />
 
 ## Why
 The NVIDIA Control Panel only stores a single set of global 3D settings plus per-application profiles. There is no built-in way to keep different driver settings for each monitor. This is inconvenient in setups where the primary display changes frequently—for example:
