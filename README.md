@@ -16,7 +16,7 @@ This tool watches for primary display changes and automatically applies the V-Sy
 ## Requirements
 - Windows 10/11 (x64)
 - Direct3D11
-- Build environment: VS2026
+- Build environment: Visual Studio 2026
 
 ## Build
 This project uses Git Submodules for its dependencies, so clone it with the following command:
