@@ -1,0 +1,9 @@
+[submodule "external/nvapi"]
+	path = external/nvapi
+	url = https://github.com/NVIDIA/nvapi.git
+[submodule "external/imgui"]
+	path = external/imgui
+	url = https://github.com/ocornut/imgui.git
+[submodule "external/json"]
+	path = external/json
+	url = https://github.com/nlohmann/json.git
