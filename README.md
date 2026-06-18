@@ -34,6 +34,9 @@ Then run @open_project.cmd located in the repository.
 4. Press "Save" to save the settings. Be sure to press Save for each display individually.
 5. When you close the window, the app minimizes to the system tray and automatically applies the settings the next time the primary display changes.
 
+## Download
+Download the latest version from the [Releases page](https://github.com/Makura0328/NV_AutoDriverController/releases/latest).
+
 ## Dependencies
 This project uses the following libraries, included as Git submodules:
 
