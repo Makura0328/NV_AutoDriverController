@@ -8,13 +8,25 @@ constexpr int WINDOW_WIDTH  = 800;
 constexpr int WINDOW_HEIGHT = 600;
 constexpr wchar_t WINDOW_TITLE[] = L"NV AutoDriverController";
 
-int APIENTRY wWinMain(_In_ HINSTANCE, _In_opt_ HINSTANCE, _In_ LPWSTR, _In_ int)
+static bool g_isStartWithTaskTray = false;
+
+int APIENTRY wWinMain(HINSTANCE, HINSTANCE, LPWSTR lpCmdLine, int)
 {
 	// アプリケーションの多重起動を防止
 	AppMutex appMutex;
 	if (appMutex.IsAlreadyRunning())
 	{
 		return -1;
+	}
+
+	// --trayオプションが指定されてたらタスクトレイから開始する
+	if (lpCmdLine != NULL && lpCmdLine[0] != '\0')
+	{
+		std::wstring cmdLine(lpCmdLine);
+		if (cmdLine == L"--tray")
+		{
+			g_isStartWithTaskTray = true;
+		}
 	}
 
 	// ウィンドウ作成
@@ -41,6 +53,12 @@ int APIENTRY wWinMain(_In_ HINSTANCE, _In_opt_ HINSTANCE, _In_ LPWSTR, _In_ int)
 		{
 			settingUIManager.OnDisplayChanged();
 		});
+
+	// --trayオプションが指定されていたらウィンドウをCLOSEしてタスクトレイに入れる
+	if (g_isStartWithTaskTray)
+	{
+		PostMessage(window.GetWindowHandle(), WM_CLOSE, 0, 0);
+	}
 
 	// メインループ
 	while (window.ProcessMessage())
