@@ -2,6 +2,7 @@
 #include "SettingUIManager.h"
 #include "GUIRenderer.h"
 #include "GUIWindow.h"
+#include "AppMutex.h"
 
 constexpr int WINDOW_WIDTH  = 800;
 constexpr int WINDOW_HEIGHT = 600;
@@ -9,6 +10,13 @@ constexpr wchar_t WINDOW_TITLE[] = L"NV AutoDriverController";
 
 int APIENTRY wWinMain(_In_ HINSTANCE, _In_opt_ HINSTANCE, _In_ LPWSTR, _In_ int)
 {
+	// アプリケーションの多重起動を防止
+	AppMutex appMutex;
+	if (AppMutex().IsAlreadyRunning())
+	{
+		return -1;
+	}
+
 	// ウィンドウ作成
 	GUIWindow window;
 	window.Create(WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_TITLE, WINDOW_TITLE);
