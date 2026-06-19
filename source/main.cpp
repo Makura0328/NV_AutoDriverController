@@ -12,7 +12,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE, _In_opt_ HINSTANCE, _In_ LPWSTR, _In_ int)
 {
 	// アプリケーションの多重起動を防止
 	AppMutex appMutex;
-	if (AppMutex().IsAlreadyRunning())
+	if (appMutex.IsAlreadyRunning())
 	{
 		return -1;
 	}
